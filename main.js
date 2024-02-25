@@ -26,11 +26,14 @@ const hero = new Sprite({
 const heroPos = new Vector2(16 * 5, 16 * 5);
 const input = new Input();
 
-const update = () => {
+const update = (delta) => {
   heroPos.x+=input.direction.x;
   heroPos.y+=input.direction.y;
 
   console.log(input.direction);
+
+  //work on hero animations
+  hero.step(delta);
 }
 
 const draw = () => {
