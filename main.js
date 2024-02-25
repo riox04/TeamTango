@@ -1,6 +1,10 @@
 import '/style.css'
 import { resources } from '/src/Resource.js';
 import { Sprite } from '/src/Sprite.js';
+import { Vector2 } from '/src/Vector2.js';
+import { GameLoop } from '/src/GameLoop';
+// import { Input,DOWN,UP,LEFT,RIGHT,UP_RIGHT } from '/src/Input.js';
+import { Input,DOWN,UP,LEFT,RIGHT,UP_RIGHT } from '/src/InputbyAxis.js';
 
 
 const canvas = document.querySelector("#game-canvas");
@@ -11,23 +15,34 @@ const skySprite = new Sprite({
   frameSize: new Vector2(320, 180)
 })
 
-const person = new Sprite({
+const hero = new Sprite({
   resource: resources.images.person,
-  frameSize: new Vector2(32,32),
-  hframes:3,
-  vFrames:8,
-  frame: 1
+  frameSize: new Vector2(16, 24),
+  hFrames: 8,
+  vFrames: 12,
+  frame: 20
 })
 
 const heroPos = new Vector2(16 * 5, 16 * 5);
+const input = new Input();
+
+const update = () => {
+  heroPos.x+=input.direction.x;
+  heroPos.y+=input.direction.y;
+
+  console.log(input.direction);
+}
 
 const draw = () => {
   skySprite.drawImage(ctx, 0, 0);
 
-  heroPos.drawImage(ctx, heroPos.x, heroPos,y);
+  // center the hero in the cell
+  // const heroOffset = new Vector2(-8, -21);
+  // const heroPosX = heroPos.x + heroOffset.x;
+  // const heroPosY = heroPos.y + 1 + heroOffset.y;
+
+  hero.drawImage(ctx, heroPos.x, heroPos.y);
 }
 
-// simple game loop
-setInterval(() => {
-  draw()
-}, 300)
+const gameLoop = new GameLoop(update, draw);
+gameLoop.start();

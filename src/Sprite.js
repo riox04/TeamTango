@@ -1,4 +1,4 @@
-import {Vector2} from "/src/Vector2.js";   
+import { Vector2 } from "/src/Vector2.js";
 
 export class Sprite {
     constructor({
@@ -10,31 +10,31 @@ export class Sprite {
         scale,
         position,
     }) {
-    this.resource = resource;
-    this.frameSize = frameSize ?? new Vector2(16,16);
-    this.hFrames = hFrames ?? 1; // ?? is default operator
-    this.vFrames = vFrames ?? 1;
-    this.frame = frame ?? 0;
-    this.frameMap = new Map();
-    this.scale = scale ?? 1;
-    this.position = position ?? new Vector2(0,0);
-    this.buildFrameMap();
+        this.resource = resource;
+        this.frameSize = frameSize ?? new Vector2(16, 24);
+        this.hFrames = hFrames ?? 1; // ?? is default operator
+        this.vFrames = vFrames ?? 1;
+        this.frame = frame ?? 0;
+        this.frameMap = new Map();
+        this.scale = scale ?? 1;
+        this.position = position ?? new Vector2(0, 0);
+        this.buildFrameMap();
     }
 
     buildFrameMap() {
         let frameCount = 0;
-        for (let v=0; v<this.vFrames; v++){
-            for(let h=0; h<this.hFrames; h++){
+        for (let v = 0; v < this.vFrames; v++) {
+            for (let h = 0; h < this.hFrames; h++) {
                 this.frameMap.set(
                     frameCount,
-                    new Vector2(this.frameSize.x * h,this.frameSize.y * v)
+                    new Vector2(16 * h, 24 * v)
                 )
                 frameCount++;
             }
         }
     }
 
-    drawImage(ctx, x , y){ 
+    drawImage(ctx, x, y) {
         if (!this.resource.isLoaded) {
             return;
         }
@@ -42,14 +42,14 @@ export class Sprite {
         let frameCoordX = 0;
         let frameCoordY = 0;
         const frame = this.frameMap.get(this.frame);
-        if(frame) {
+        if (frame) {
             frameCoordX = frame.x;
-            frameCoordY = frame.x;
+            frameCoordY = frame.y;
         }
 
         const frameSizeX = this.frameSize.x;
         const frameSizeY = this.frameSize.y;
-        
+
         ctx.drawImage(
             this.resource.image,
             frameCoordX,
