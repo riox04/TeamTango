@@ -1,11 +1,11 @@
 import '/style.css'
 import { resources } from '/src/Resource.js';
 import { Sprite } from '/src/Sprite.js';
-import { Vector2 } from '/src/Vector2.js';
-import { GameLoop } from '/src/GameLoop';
-// import { Input,DOWN,UP,LEFT,RIGHT,UP_RIGHT } from '/src/Input.js';
-import { Input,DOWN,UP,LEFT,RIGHT,UP_RIGHT } from '/src/InputbyAxis.js';
-
+import { Vector2 } from '/src/utility/Vector2.js';
+import { GameLoop } from '/src/game/GameLoop';
+import { input } from '/src/Input.js';
+import { Animations } from '/src/Animations.js';
+import { FrameIndexPattern } from '/src/FrameIndexPattern.js';
 
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
@@ -24,28 +24,21 @@ const hero = new Sprite({
 })
 
 const heroPos = new Vector2(16 * 5, 16 * 5);
-const input = new Input();
 
 const update = (delta) => {
-  heroPos.x+=input.direction.x;
-  heroPos.y+=input.direction.y;
+  heroPos.x += input.axis.x;
+  heroPos.y -= input.axis.y;
 
-  console.log(input.direction);
+  console.log(input.horizontalStack.join(", "));
 
-  //work on hero animations
-  hero.step(delta);
 }
 
 const draw = () => {
-  skySprite.drawImage(ctx, 0, 0);
-
-  // center the hero in the cell
-  // const heroOffset = new Vector2(-8, -21);
-  // const heroPosX = heroPos.x + heroOffset.x;
-  // const heroPosY = heroPos.y + 1 + heroOffset.y;
+  // skySprite.drawImage(ctx, 0, 0);
 
   hero.drawImage(ctx, heroPos.x, heroPos.y);
 }
 
 const gameLoop = new GameLoop(update, draw);
 gameLoop.start();
+input.Initialize();

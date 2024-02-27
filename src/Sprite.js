@@ -1,5 +1,4 @@
-import { Vector2 } from "/src/Vector2.js";
-import { FrameIndexPattern } from "/src/FrameIndexPattern";
+import { Vector2 } from "/src/utility/Vector2.js";
 
 export class Sprite {
     constructor({
@@ -9,8 +8,8 @@ export class Sprite {
         vFrames, // frame pos vertically
         frame, // which frame we want to show
         scale,
-        position,
-        animations
+        position, // where to draw it (top left corner)
+        animations,
     }) {
         this.resource = resource;
         this.frameSize = frameSize ?? new Vector2(16, 24);
@@ -20,7 +19,7 @@ export class Sprite {
         this.frameMap = new Map();
         this.scale = scale ?? 1;
         this.position = position ?? new Vector2(0, 0);
-        this.animations = animations,
+        this.animations = animations ?? null;
         this.buildFrameMap();
     }
 
@@ -37,7 +36,7 @@ export class Sprite {
         }
     }
 
-    step (delta) {
+    step(delta) {
         if(!this.animations){
             return;
         }
@@ -69,7 +68,7 @@ export class Sprite {
             frameSizeY,
             x, // where to palce this image in the canvas
             y, // ^^ 
-            frameSizeX * this.scale, // how large ?? 1
+            frameSizeX * this.scale, // how  large ?? 1
             frameSizeY * this.scale,
         );
     }
