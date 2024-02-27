@@ -30,7 +30,6 @@ export class Input {
                 this.onArrowPressed(RIGHT);
             }
 
-
         })
 
         document.addEventListener('keyup', (e) => {
@@ -113,6 +112,11 @@ export class Input {
     get getMovementAxis() {
 
     }
+
+    get isIdle() {
+        return this.horizontalStack.length === 0 && this.verticalStack.length === 0;
+    }
+    
 }
 
 export const input = new Input();

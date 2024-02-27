@@ -24,7 +24,7 @@ export class GameLoop {
         // Fixed time step updates
         // if theres enough accumulated time to run one or more fixed updates, we run them.
         while (this.accumulatedTime >= this.timeStep) {
-            this.update(this.timeStep); // passing the fixed time step.
+            this.update(timestamp); // passing the current time
             this.accumulatedTime -= this.timeStep; 
         }
 

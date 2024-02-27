@@ -1,11 +1,12 @@
 import '/style.css'
-import { resources } from '/src/Resource.js';
-import { Sprite } from '/src/Sprite.js';
+import { resources } from '/src/utility/Resource.js';
+import { Sprite } from '/src/utility/Sprite.js';
 import { Vector2 } from '/src/utility/Vector2.js';
 import { GameLoop } from '/src/game/GameLoop';
 import { input } from '/src/Input.js';
 import { Animations } from '/src/Animations.js';
 import { FrameIndexPattern } from '/src/FrameIndexPattern.js';
+import { GameManager } from './src/game/GameManager';
 
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
@@ -23,22 +24,14 @@ const hero = new Sprite({
   frame: 20
 })
 
-const heroPos = new Vector2(16 * 5, 16 * 5);
-
-const update = (delta) => {
-  heroPos.x += input.axis.x;
-  heroPos.y -= input.axis.y;
-
-  console.log(input.horizontalStack.join(", "));
-
+const main1 = () => {
+  let game = new GameManager(ctx);
+  game.Start();
 }
 
-const draw = () => {
-  // skySprite.drawImage(ctx, 0, 0);
 
-  hero.drawImage(ctx, heroPos.x, heroPos.y);
-}
+// const gameLoop = new GameLoop(update, draw);
+// gameLoop.start();
+// input.Initialize();
 
-const gameLoop = new GameLoop(update, draw);
-gameLoop.start();
-input.Initialize();
+main1();

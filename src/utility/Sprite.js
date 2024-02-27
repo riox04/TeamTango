@@ -1,3 +1,4 @@
+import { resources } from "/src/utility/Resource";
 import { Vector2 } from "/src/utility/Vector2.js";
 
 export class Sprite {
@@ -44,32 +45,31 @@ export class Sprite {
         this.frame = this.animations.frame;
     }
 
-    drawImage(ctx, x, y) {
-        if (!this.resource.isLoaded) {
-            return;
-        }
-
-        let frameCoordX = 0;
-        let frameCoordY = 0;
-        const frame = this.frameMap.get(this.frame);
-        if (frame) {
-            frameCoordX = frame.x;
-            frameCoordY = frame.y;
-        }
-
-        const frameSizeX = this.frameSize.x;
-        const frameSizeY = this.frameSize.y;
-
-        ctx.drawImage(
-            this.resource.image,
-            frameCoordX,
-            frameCoordY, // Top Y corner
-            frameSizeX, // how much to cropt from the sprite sheet x axis
-            frameSizeY,
-            x, // where to palce this image in the canvas
-            y, // ^^ 
-            frameSizeX * this.scale, // how  large ?? 1
-            frameSizeY * this.scale,
-        );
-    }
 }
+
+export const DEFAULT_SPRITE = new Sprite({
+    resource: resources.images.default,
+    frameSize: new Vector2(16, 16)
+});
+
+export const HERO  = new Sprite({
+    resource: resources.images.person,
+    frameSize: new Vector2(16, 24),
+    hFrames: 8,
+    vFrames: 12,
+    frame: 20,
+});
+
+export const FRIEND  = new Sprite({
+    resource: resources.images.person,
+    frameSize: new Vector2(16, 24),
+    hFrames: 8,
+    vFrames: 12,
+    frame: 52,
+});
+
+
+export const SKY = new Sprite({
+    resource: resources.images.sky,
+    frameSize: new Vector2(320, 180)
+});
