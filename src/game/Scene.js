@@ -1,5 +1,6 @@
 import { GameManager } from "./GameManager";
 import { Vector2 } from "../utility/Vector2";
+import { Physics } from "../physics/Physics";
 
 export class Scene {
 
@@ -9,9 +10,17 @@ export class Scene {
         this.activeRigidbodies = [];
     }
 
-    addObject(obj) { this.sceneObjects.push(obj); }
-    addCollider(col) { this.activeColliders.push(col); }
-    addRigidBody(rbd) { this.activeRigidbodies.push(rbd); }
+    addObject(obj) {
+        this.sceneObjects.push(obj);
+    }
+
+    addCollider(coll) {
+        this.activeColliders.push(coll);
+    }
+
+    addRigidBody(rbd) {
+        this.activeRigidbodies.push(rbd);
+    }
 
     Update() {
         this.sceneObjects.forEach(obj => {
@@ -62,5 +71,8 @@ export class Scene {
     }
 
     get objectCount() { return this.sceneObjects.length; }
-}
 
+    OnPhysicsUpdate() {
+        Physics.Simulate(activeColliders, activeRigidbodies);
+    }
+}

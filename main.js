@@ -4,8 +4,6 @@ import { Sprite } from '/src/utility/Sprite.js';
 import { Vector2 } from '/src/utility/Vector2.js';
 import { GameLoop } from '/src/game/GameLoop';
 import { input } from '/src/Input.js';
-import { Animations } from '/src/Animations.js';
-import { FrameIndexPattern } from '/src/FrameIndexPattern.js';
 import { GameManager } from './src/game/GameManager';
 
 const canvas = document.querySelector("#game-canvas");

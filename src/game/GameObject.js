@@ -15,7 +15,7 @@ export class GameObject {
         this.collider;
         this.rigidBody;
 
-        //adds itslef to the scene oject list to get drawn
+        //adds itself to the scene oject list to get drawn
         GameManager.activeScene.addObject(this);
 
     }   
