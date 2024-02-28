@@ -38,7 +38,7 @@ export class Sprite {
     }
 
     step(delta) {
-        if(!this.animations){
+        if (!this.animations) {
             return;
         }
         this.animations.step(delta);
@@ -52,7 +52,7 @@ export const DEFAULT_SPRITE = new Sprite({
     frameSize: new Vector2(16, 16)
 });
 
-export const HERO  = new Sprite({
+export const HERO = new Sprite({
     resource: resources.images.person,
     frameSize: new Vector2(16, 24),
     hFrames: 8,
@@ -60,7 +60,7 @@ export const HERO  = new Sprite({
     frame: 20,
 });
 
-export const FRIEND  = new Sprite({
+export const FRIEND = new Sprite({
     resource: resources.images.person,
     frameSize: new Vector2(16, 24),
     hFrames: 8,
@@ -73,3 +73,13 @@ export const SKY = new Sprite({
     resource: resources.images.sky,
     frameSize: new Vector2(320, 180)
 });
+
+export const NULL_SPRITE = new Sprite({
+    resource: resources.images.default,
+    frameSize: new Vector2(0, 0)
+})
+
+export const GAMEOVER = new Sprite({
+    resource: resources.images.gameover,
+    frameSize: new Vector2(800, 600),
+})

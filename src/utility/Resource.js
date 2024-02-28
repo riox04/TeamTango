@@ -4,7 +4,8 @@ class Resources {
         this.toLoad = {
             sky: "/sky.png",
             person: "/character_sheet.png",
-            default: "/default.png"
+            default: "/default.png",
+            gameover: "/gameover.png"
         };
 
         // where all the images are kept

@@ -5,6 +5,7 @@ import { GameManager } from "../game/GameManager";
 import { Vector2 } from "../utility/Vector2";
 import { AnimationClip } from "../animator/AnimationClip";
 import { Animator } from "../animator/Animator";
+import { Collider } from "../physics/Collider";
 
 
 export class Friend extends GameObject {
@@ -14,6 +15,8 @@ export class Friend extends GameObject {
         this.frameSkip = frameSkip ?? 10;
         this.scale = 1.9;
         GameManager.playerFriends.push(this);
+        
+        this.tag = "friend";
 
         const idleFrameArr = [44];
         this.idleAnimClip = new AnimationClip(idleFrameArr, 100, this.sprite);
@@ -22,6 +25,8 @@ export class Friend extends GameObject {
         this.walkAnimClip = new AnimationClip(walkFrameArr, 100, this.sprite);
         
         this.playerAnimator = new Animator();
+
+        this.collider = new Collider(12,20,9,17,this);
     }
 
     Update() {

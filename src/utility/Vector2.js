@@ -23,4 +23,10 @@ export class Vector2 {
     multiply(num) {
         return new Vector2(this.x * num, this.y * num);
     }
+
+    static vectUP = new Vector2(0,1);
+    static vectDOWN = new Vector2(0,-1);
+    static vectRIGHT = new Vector2(1,0);
+    static vectLEFT = new Vector2(-1,0);
 }
+

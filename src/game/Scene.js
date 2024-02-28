@@ -22,6 +22,18 @@ export class Scene {
         this.activeRigidbodies.push(rbd);
     }
 
+    removeObject(item) {
+        let indexObj = this.sceneObjects.indexOf(item);
+        let indexCol = this.activeColliders.indexOf(item.collider);
+
+        if (indexObj > -1) {
+            this.sceneObjects.splice(indexObj, 1);
+        }
+        if (indexCol > -1) {
+            this.activeColliders.splice(indexCol, 1);
+        }
+    }
+
     Update() {
         this.sceneObjects.forEach(obj => {
             obj.InternalUpdate();
@@ -73,6 +85,15 @@ export class Scene {
     get objectCount() { return this.sceneObjects.length; }
 
     OnPhysicsUpdate() {
-        Physics.Simulate(activeColliders, activeRigidbodies);
+        Physics.Simulate(this.activeColliders, this.activeRigidbodies);
     }
+
+    DrawGizmos(){
+        this.sceneObjects.forEach(obj => {
+            //fires the onRender callback on each GameObject
+            obj.DrawGizmos();
+
+        });
+    }
+
 }
