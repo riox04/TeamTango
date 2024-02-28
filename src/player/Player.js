@@ -115,7 +115,7 @@ export class Player extends GameObject {
             this.followerCount++;
             let conga = new Friend(this.followerCount * 35);
             conga.position = new Vector2(this.position.x + 3500, this.position.y + 3500);
-            GameManager.score += 10;
+            GameManager.score += 1;
             GameManager.spawner.lastObjExists = false;
 
         }
