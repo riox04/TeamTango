@@ -27,7 +27,7 @@ export class Friend extends GameObject {
 
         const walkUpRightFrameList = [41, 49, 57, 49];
         const walkDownRightFrameList = [43, 51, 59, 51];
-        const walkUpLeftFrameList = [45, 53, 61, 53];
+        const walkUpLeftFrameList = [47, 55, 63, 55];
         const walkDownLeftFrameList = [45, 53, 61, 53];
 
         const idleClipFrameList = [52];
