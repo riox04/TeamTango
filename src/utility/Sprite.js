@@ -59,7 +59,13 @@ export const HERO = new Sprite({
     vFrames: 12,
     frame: 20,
 });
-
+export const PICKUPABLE = new Sprite({
+    resource: resources.images.person,
+    frameSize: new Vector2(16, 24),
+    hFrames: 8,
+    vFrames: 12,
+    frame: 20,
+});
 export const FRIEND = new Sprite({
     resource: resources.images.person,
     frameSize: new Vector2(16, 24),
@@ -70,8 +76,8 @@ export const FRIEND = new Sprite({
 
 
 export const SKY = new Sprite({
-    resource: resources.images.sky,
-    frameSize: new Vector2(320, 180)
+    resource: resources.images.grassbed,
+    frameSize: new Vector2(640, 640)
 });
 
 export const NULL_SPRITE = new Sprite({

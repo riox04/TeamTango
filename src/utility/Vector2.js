@@ -1,4 +1,15 @@
 export class Vector2 {
+    static Up = new Vector2(0, 1);
+    static Down = new Vector2(0, -1);
+    static Right = new Vector2(1, 0);
+    static Left = new Vector2(-1, 0);
+
+    static UpRight = new Vector2(1, 1);
+    static UpLeft = new Vector2(-1, 1);
+    static DownRight = new Vector2(1, -1);
+    static DownLeft = new Vector2(-1, -1);
+
+    static Empty = new Vector2(0, 0);
     constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
@@ -24,9 +35,5 @@ export class Vector2 {
         return new Vector2(this.x * num, this.y * num);
     }
 
-    static vectUP = new Vector2(0,1);
-    static vectDOWN = new Vector2(0,-1);
-    static vectRIGHT = new Vector2(1,0);
-    static vectLEFT = new Vector2(-1,0);
 }
 

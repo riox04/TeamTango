@@ -1,13 +1,10 @@
 import { GameLoop } from "./GameLoop.js";
 import { GameObject } from "./GameObject.js";
-import { resources } from "../utility/Resource.js";
 import { Scene } from "./Scene.js";
 import { DEFAULT_SPRITE, HERO, Sprite, SKY, NULL_SPRITE, GAMEOVER } from "../utility/Sprite.js";
 import { Vector2 } from "../utility/Vector2.js";
 import { input } from "/src/Input.js";
 import { Player } from "../player/Player.js";
-import { Friend } from "../player/Friend.js";
-import { Physics } from "../physics/Physics.js";
 import { Collider } from "../physics/Collider.js";
 import { Spawner } from "./Spawner.js";
 import { Gizmos } from "../gizmos/Gizmos.js";
@@ -19,10 +16,11 @@ export class GameManager {
     static gameloop;
     static activeScene;
     static playerLastPos = [];
+    static playerLastDir = [];
     static playerFriends = [];
     static score = 0;
     static spawner;
-
+    static deltaTime = 0;
     constructor(ctx) {
         GameManager.activeScene = new Scene();
         GameManager.ctx = ctx;
@@ -36,11 +34,11 @@ export class GameManager {
         //Add  objects to the scene here
         let sky = new GameObject();
         sky.sprite = SKY;
-        sky.scale = 4.5;
+        sky.scale = 2;
 
-        let testPlaya1 = new Player();
-        testPlaya1.position = new Vector2(300, 100)
-        testPlaya1.sprite = HERO;
+        let playerOne = new Player();
+        playerOne.position = new Vector2(370, 250)
+        playerOne.sprite = HERO;
 
         let raxis = new GameObject();
         raxis.position = new Vector2(799, 0);
@@ -63,23 +61,17 @@ export class GameManager {
         downaxis.collider = new Collider(799, 2, 0, 0, downaxis);
 
         raxis.sprite = laxis.sprite = upaxis.sprite = downaxis.sprite = NULL_SPRITE;
-
-
         //<-------------------------------------------------------->
-
-        //<-------------------Gizmos Commands---------------------->
-
-        //<-------------------------------------------------------->
-
 
 
         //Starts the game-loop
         GameManager.gameloop.start();
     }
 
-    Update(time) {
-        //update global time and frame no
+    Update(time,deltaTime) {
+        //update global time 
         GameManager.time = time;
+        GameManager.deltaTime = deltaTime/1000;
         GameManager.activeScene.Update();
         GameManager.activeScene.OnPhysicsUpdate();
         GameManager.spawner.Spawn();

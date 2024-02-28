@@ -1,5 +1,3 @@
-import { Collider } from "./Collider";
-
 export class Physics {
     constructor() {
 

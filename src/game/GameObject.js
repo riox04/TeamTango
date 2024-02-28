@@ -1,9 +1,6 @@
 import { Vector2 } from "../utility/Vector2.js";
 import { DEFAULT_SPRITE } from "../utility/Sprite.js";
 import { GameManager } from "./GameManager.js";
-import { input } from "../Input.js"
-import { Gizmos } from "../gizmos/Gizmos.js";
-import { Collider } from "../physics/Collider.js";
 
 export class GameObject {
 

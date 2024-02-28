@@ -1,5 +1,4 @@
 import { GameManager } from "./GameManager";
-import { Vector2 } from "../utility/Vector2";
 import { Physics } from "../physics/Physics";
 
 export class Scene {

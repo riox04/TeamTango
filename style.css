@@ -3,6 +3,11 @@ html, body {
   margin: 0;
   overflow: hidden;
   image-rendering: pixelated;
+  background-color: #19002C;
+}
+label {
+  font-size:x-small;
+  color:white;
 }
 
 canvas {
@@ -10,5 +15,8 @@ display: flex;
 justify-content: center;
 margin-left: auto;
 margin-right: auto;
-background: #95e968;
+background: #68e97b;
+margin-top: 40px;
+border: 5px ridge 68b5e9;
+box-shadow: 0 0 10px 5px #48abe0;
 }

@@ -14,7 +14,6 @@ export class Input {
     }
 
     Initialize() {
-        console.log("Initialized Input Module");
         document.addEventListener('keydown', (e) => {
 
             if (e.code === "ArrowUp" || e.code === "KeyW") {
@@ -116,7 +115,7 @@ export class Input {
     get isIdle() {
         return this.horizontalStack.length === 0 && this.verticalStack.length === 0;
     }
-    
+
 }
 
 export const input = new Input();

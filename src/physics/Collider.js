@@ -2,10 +2,10 @@ import { GameManager } from "../game/GameManager";
 import { Gizmos } from "../gizmos/Gizmos";
 
 export class Collider {
-    constructor(width,height,offsetX,offsetY,parentObj) {
+    constructor(width, height, offsetX, offsetY, parentObj) {
         this.x = 0;
         this.y = 0;
-        this.width = width ?? 0;    
+        this.width = width ?? 0;
         this.height = height ?? 0;
         this.isTrigger = false;
         this.currentColor = "green";
@@ -24,12 +24,14 @@ export class Collider {
             this.y < collider.y + collider.height &&
             this.y + this.height > collider.y)
 
-            
+
     }
 
     onDrawGizmos() {
-        Gizmos.color = this.currentColor;
-        Gizmos.DrawBox(this.x,this.y,this.width,this.height);
+        if (Gizmos.drawColliderGizmos) {
+            Gizmos.color = this.currentColor;
+            Gizmos.DrawBox(this.x, this.y, this.width, this.height);
+        }
     }
 
 }

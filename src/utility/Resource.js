@@ -5,7 +5,9 @@ class Resources {
             sky: "/sky.png",
             person: "/character_sheet.png",
             default: "/default.png",
-            gameover: "/gameover.png"
+            gameover: "/gameover.png",
+            grassbed: "/grass-bed.png",
+
         };
 
         // where all the images are kept
